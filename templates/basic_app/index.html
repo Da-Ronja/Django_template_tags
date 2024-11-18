@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Basic App</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center text-primary mb-4">Basic Blog App</h1>
+    <p class="lead text-center">This is a basic blog app.</p>
+
+    <h2 class="text-secondary mb-4">Posts</h2>
+    <div class="list-group">
+        {% for post in posts %}
+        <div class="list-group-item mb-3">
+            <h2 class="h5">
+                <a href="{% url 'post_detail' post.id %}" class="text-decoration-none text-dark">{{ post.title }}</a>
+            </h2>
+            <p class="text-muted mb-0">
+                <small>Published on {{ post.created|date:"F j, Y" }}</small>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
